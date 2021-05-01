@@ -7,8 +7,13 @@ import lxml.html
 if ('GCM_SECRET' not in os.environ or 'GCM_ACCOUNT' not in os.environ):
     sys.exit("GCM_SECRET or GCM_ACCOUNT not set! Exiting...")
 
-gcm_secret = os.environ.get('GCM_SECRET')
-gcm_account = os.environ.get('GCM_ACCOUNT')
+gcm_secret = os.getenv('GCM_SECRET')
+gcm_account = os.getenv('GCM_ACCOUNT')
+
+try:
+    timeout = float(os.getenv("AMD_TIMEOUT", 1))
+except ValueError:
+    timeout = 1
 
 baseUrl = "https://store.digitalriver.com/store/defaults/de_DE/AddItemToRequisition/productID."
 
@@ -26,7 +31,7 @@ def sendCloudMessage():
     data = {
         "secret": gcm_secret,
         "to": gcm_account,
-        "priority": "normal",
+        "priority": "high",
         "payload": "AAALLLAARM in der Feuerwache!"
     }
 
@@ -54,7 +59,7 @@ def main():
                 time.sleep(86400)
 
             print("CAT15")
-            time.sleep(1)
+            time.sleep(timeout)
 
 
 main()
