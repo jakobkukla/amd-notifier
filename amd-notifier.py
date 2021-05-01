@@ -1,6 +1,7 @@
 import os
 import sys
 import time
+from datetime import datetime
 import requests
 import lxml.html
 
@@ -51,7 +52,8 @@ def getErrorCode(productId):
 def main():
     while True:
         for name, id in productIds.items():
-            print(name + ": ", end='')
+            dt = datetime.now().strftime("[%d/%m/%Y %H:%M:%S] ")
+            print(dt + name + ": ", end='')
 
             if (getErrorCode(id) == 16):
                 sendCloudMessage()
