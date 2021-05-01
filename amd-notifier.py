@@ -16,8 +16,6 @@ try:
 except ValueError:
     timeout = 1
 
-baseUrl = "https://store.digitalriver.com/store/defaults/de_DE/AddItemToRequisition/productID."
-
 productIds = {
     '6700XT': '5496921400',
     '6800':   '5458374000',
@@ -29,6 +27,7 @@ productIds = {
 
 def sendCloudMessage():
     baseUrl = "https://llamalab.com/automate/cloud/message"
+
     data = {
         "secret": gcm_secret,
         "to": gcm_account,
@@ -40,6 +39,8 @@ def sendCloudMessage():
 
 
 def getErrorCode(productId):
+    baseUrl = "https://store.digitalriver.com/store/defaults/de_DE/AddItemToRequisition/productID."
+
     response = requests.get(baseUrl + productId, stream=True)
     response.raw.decode_content = True
 
