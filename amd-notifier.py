@@ -39,7 +39,7 @@ def sendCloudMessage():
 
 
 def getErrorCode(productId):
-    baseUrl = "https://store.digitalriver.com/store/defaults/de_DE/AddItemToRequisition/productID."
+    baseUrl = "https://store.digitalriver.com/store/vmwde/de_DE/AddItemToRequisition/productID."
 
     response = requests.get(baseUrl + productId, stream=True)
     response.raw.decode_content = True
