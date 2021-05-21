@@ -58,8 +58,8 @@ def main():
 
             if (getErrorCode(id) == 16):
                 sendCloudMessage()
-                print("CAT16 detected: Notification sent! Sleeping for 24h...")
-                time.sleep(86400)
+                print("CAT16 detected: Notification sent! Sleeping for 36h...")
+                time.sleep(129600)
 
             print("CAT15")
             time.sleep(timeout)
